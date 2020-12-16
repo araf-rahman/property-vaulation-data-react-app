@@ -1,5 +1,6 @@
   import React, { Component } from "react";
-  import {Table, Button} from 'react-bootstrap'
+  import Button from 'react-bootstrap/Button';
+  import Table from 'react-bootstrap/Table';
 
   class Search extends Component {
       state = {
