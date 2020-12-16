@@ -1,5 +1,7 @@
 # NYC Property Valuation React APP
 
+This App was built using React. The tax data was was retrieved from [Open data NYC](https://data.cityofnewyork.us/City-Government/Property-Valuation-and-Assessment-Data-Tax-Classes/8y4t-faws) platfrom through public API.
+
 ## :video_camera: APP Demo
 ![](app-demo.gif)
 
