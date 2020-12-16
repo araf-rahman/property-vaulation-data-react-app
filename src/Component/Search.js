@@ -1,5 +1,5 @@
   import React, { Component } from "react";
-  import Table from 'react-bootstrap/Table'
+  import {Table, Button} from 'react-bootstrap'
 
   class Search extends Component {
       state = {
@@ -29,48 +29,49 @@
       render() {
         return (
           <div id="main">
-            <h1>NYC Property Valuation and Assessment Info</h1>
+            <h1 className= "header">NYC Property Valuation and Assessment Info</h1>
             <input
               name="text"
               type="text"
               placeholder="Search"
+              className = "inputbox"
               onChange={event => this.handleOnChange(event)}
               value={this.state.searchValue}
             />
-            <button onClick={this.handleSearch}>Search</button>
+            <Button variant="primary" onClick={this.handleSearch}>Search</Button>
+            
             {this.state.taxInfo ? (
-              <div>
-                <Table striped bordered hove size="sm">
-                <thead>
-                  <tr>
-                    <th>Owner</th>
-                    <th>Property Address</th>
-                    <th>ZipCode</th>
-                    <th>Tax Year</th>
-                    <th>Current Year Final Market Value</th>
-                    <th>Current Year Taxable Value Value</th>
-                    <th>Prior Year Final Market Value</th>
-                    <th>Prior Year Taxable Value Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {this.state.taxInfo.map((data, index) => (
-                    <tr key={index}> 
-                      <td>{data.owner}</td>
-                      <td>{data.housenum_hi} {data.street_name} {data.boro}</td>
-                      <td>{data.zip_code}</td>
-                      <td>{data.year}</td>
-                      <td>${data.finmkttot}</td>
-                      <td>${data.fintrntot}</td>
-                      <td>${data.pymkttot}</td>
-                      <td>${data.pytxbtot}</td>
+                <Table responsive size="sm" className="table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Owner</th>
+                      <th>Property Address</th>
+                      <th>ZipCode</th>
+                      <th>Tax Year</th>
+                      <th>Current Year Final Market Value</th>
+                      <th>Current Year Taxable Value Value</th>
+                      <th>Prior Year Final Market Value</th>
+                      <th>Prior Year Taxable Value Value</th>
                     </tr>
-                ))}
-                </tbody>
+                  </thead>
+                  <tbody>
+                  {this.state.taxInfo.map((data, index) => (
+                      <tr key={index}> 
+                        <td>{data.owner}</td>
+                        <td>{data.housenum_hi} {data.street_name}</td>
+                        <td>{data.zip_code}</td>
+                        <td>{data.year}</td>
+                        <td>${data.finmkttot}</td>
+                        <td>${data.fintrntot}</td>
+                        <td>${data.pymkttot}</td>
+                        <td>${data.pytxbtot}</td>
+                      </tr>
+                  ))}
+                  </tbody>
                 </Table>
-                </div>
             ) : (
-              <p>Enter Property Address(Street number and name) to get more info</p>
+            
+              <p className="text-muted" >Enter Property Address(Street number and name) to get more info</p>
             )}
           </div>
         );
